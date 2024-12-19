@@ -30,8 +30,7 @@ Before you begin, ensure you have the following installed:
 
 1. Clone the repository:
 ```bash
-git clone https://github.com/yourusername/user-management.git
-cd user-management
+git clone https://github.com/gauravdave083/Employee_Management.git
 ```
 
 2. Install dependencies:
@@ -46,7 +45,7 @@ npm install react-router-dom @radix-ui/react-slot @radix-ui/react-toast class-va
 
 4. Start the development server:
 ```bash
-npm start
+npm run dev
 ```
 
 5. Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
