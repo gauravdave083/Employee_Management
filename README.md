@@ -122,6 +122,6 @@ This project is licensed under the MIT License - see the LICENSE file for detail
 
 ## 📧 Contact
 
-Your Name - [@yourusername](https://twitter.com/yourusername)
+Your Name - [@gauravdave083](https://github.com/gauravdave083)
 
-Project Link: [https://github.com/yourusername/user-management](https://github.com/yourusername/user-management)
+Project Link: [https://github.com/gauravdave083/Employee_Management](https://github.com/gauravdave083/Employee_Management)
