@@ -76,90 +76,100 @@ const UserList = () => {
   );
 
   return (
-    <div className="container mx-auto p-4">
-      <div className="flex justify-between items-center mb-6">
-        <h1 className="text-2xl font-bold">Users</h1>
-        <Button variant="outline" onClick={logout}>
-          Logout
-        </Button>
-      </div>
-
-      <Input
-        type="text"
-        placeholder="Search users..."
-        value={searchTerm}
-        onChange={(e) => setSearchTerm(e.target.value)}
-        className="mb-4"
-      />
-
-      <Table>
-        <TableHeader>
-          <TableRow>
-            <TableHead>Avatar</TableHead>
-            <TableHead>First Name</TableHead>
-            <TableHead>Last Name</TableHead>
-            <TableHead>Email</TableHead>
-            <TableHead>Actions</TableHead>
-          </TableRow>
-        </TableHeader>
-        <TableBody>
-          {loading ? (
-            <TableRow>
-              <TableCell colSpan={5} className="text-center">
-                Loading...
-              </TableCell>
-            </TableRow>
-          ) : (
-            filteredUsers.map((user) => (
-              <TableRow key={user.id}>
-                <TableCell>
-                  <img
-                    src={user.avatar}
-                    alt={`${user.first_name}'s avatar`}
-                    className="w-10 h-10 rounded-full"
-                  />
-                </TableCell>
-                <TableCell>{user.first_name}</TableCell>
-                <TableCell>{user.last_name}</TableCell>
-                <TableCell>{user.email}</TableCell>
-                <TableCell>
-                  <div className="space-x-2">
-                    <Button
-                      variant="outline"
-                      onClick={() => navigate(`/edit/${user.id}`)}
-                    >
-                      Edit
-                    </Button>
-                    <Button
-                      variant="destructive"
-                      onClick={() => handleDelete(user.id)}
-                    >
-                      Delete
-                    </Button>
-                  </div>
-                </TableCell>
-              </TableRow>
-            ))
-          )}
-        </TableBody>
-      </Table>
-
-      <div className="flex justify-center gap-2 mt-4">
-        <Button
-          onClick={() => setPage(p => p - 1)}
-          disabled={page === 1}
-        >
-          Previous
-        </Button>
-        <Button
-          onClick={() => setPage(p => p + 1)}
-          disabled={page === totalPages}
-        >
-          Next
-        </Button>
-      </div>
-    </div>
-  );
-};
+          <div className="space-y-6">
+            <div className="flex justify-between items-center">
+              <h1 className="text-3xl font-bold text-gray-900">Users</h1>
+              <Button 
+                variant="outline" 
+                onClick={logout}
+                className="bg-white text-black border-gray-300 hover:bg-gray-50"
+              >
+                Logout
+              </Button>
+            </div>
+      
+            <Input
+              type="text"
+              placeholder="Search users..."
+              value={searchTerm}
+              onChange={(e) => setSearchTerm(e.target.value)}
+              className="w-full max-w-md border-gray-300"
+            />
+      
+            <div className="bg-white rounded-lg shadow">
+              <Table>
+                <TableHeader>
+                  <TableRow className="border-b border-gray-200">
+                    <TableHead className="bg-gray-50">Avatar</TableHead>
+                    <TableHead className="bg-gray-50">First Name</TableHead>
+                    <TableHead className="bg-gray-50">Last Name</TableHead>
+                    <TableHead className="bg-gray-50">Email</TableHead>
+                    <TableHead className="bg-gray-50">Actions</TableHead>
+                  </TableRow>
+                </TableHeader>
+                <TableBody>
+                  {loading ? (
+                    <TableRow>
+                      <TableCell colSpan={5} className="text-center py-8">
+                        Loading...
+                      </TableCell>
+                    </TableRow>
+                  ) : (
+                    filteredUsers.map((user) => (
+                      <TableRow key={user.id} className="border-b border-gray-200">
+                        <TableCell className="p-4">
+                          <img
+                            src={user.avatar}
+                            alt={`${user.first_name}'s avatar`}
+                            className="w-10 h-10 rounded-full"
+                          />
+                        </TableCell>
+                        <TableCell className="p-4">{user.first_name}</TableCell>
+                        <TableCell className="p-4">{user.last_name}</TableCell>
+                        <TableCell className="p-4">{user.email}</TableCell>
+                        <TableCell className="p-4">
+                          <div className="space-x-2">
+                            <Button
+                              variant="outline"
+                              onClick={() => navigate(`/edit/${user.id}`)}
+                              className="bg-white text-black border-gray-300 hover:bg-gray-50"
+                            >
+                              Edit
+                            </Button>
+                            <Button
+                              variant="outline"
+                              onClick={() => handleDelete(user.id)}
+                              className="bg-white text-black border-gray-300 hover:bg-gray-50"
+                            >
+                              Delete
+                            </Button>
+                          </div>
+                        </TableCell>
+                      </TableRow>
+                    ))
+                  )}
+                </TableBody>
+              </Table>
+            </div>
+      
+            <div className="flex justify-center gap-2 mt-6">
+              <Button
+                onClick={() => setPage(p => p - 1)}
+                disabled={page === 1}
+                className="bg-white text-black border-gray-300 hover:bg-gray-50"
+              >
+                Previous
+              </Button>
+              <Button
+                onClick={() => setPage(p => p + 1)}
+                disabled={page === totalPages}
+                className="bg-white text-black border-gray-300 hover:bg-gray-50"
+              >
+                Next
+              </Button>
+            </div>
+          </div>
+        );
+      };
 
 export default UserList;
